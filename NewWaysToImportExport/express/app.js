@@ -3,7 +3,7 @@ const user = require("../express/user.json");
 const application = express();
 
 application.get("/", (req, res) => {
-  res.send("<h1>HEllO WORLD</h1>");
+  res.send("<h1>Welcome To Home Page</h1>");
 });
 application.get("/user", (req, res) => {
   res.send({ user });
