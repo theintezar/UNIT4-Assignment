@@ -1,0 +1,569 @@
+> show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+movie   0.000GB
+
+> use movie
+switched to db movie
+
+
+
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235c"),
+        "id" : 1,
+        "Movie_name" : "Towelhead (a.k.a. Nothing is Private)",
+        "movie_genre" : "Drama",
+        "production_year" : 2006,
+        "budget" : 16724
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235d"),
+        "id" : 2,
+        "Movie_name" : "Chronicles of Narnia: Prince Caspian, The",
+        "movie_genre" : "Adventure|Children|Fantasy",
+        "production_year" : 2001,
+        "budget" : 19577
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235e"),
+        "id" : 3,
+        "Movie_name" : "Groove",
+        "movie_genre" : "Drama",
+        "production_year" : 2000,
+        "budget" : 11056
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235f"),
+        "id" : 4,
+        "Movie_name" : "Robin Hood",
+        "movie_genre" : "Adventure|Romance",
+        "production_year" : 2013,
+        "budget" : 14620
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2360"),
+        "id" : 5,
+        "Movie_name" : "Beyond the Gates of Splendor",
+        "movie_genre" : "Documentary",
+        "production_year" : 1967,
+        "budget" : 19752
+}
+
+
+> db.users.find().count()
+500
+
+
+> db.users.find({Movie_name:{$eq: "Stake Land"}}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c236f"),
+        "id" : 20,
+        "Movie_name" : "Stake Land",
+        "movie_genre" : "Horror",
+        "production_year" : 2001,
+        "budget" : 14590
+}
+>
+
+
+
+> db.users.find({Movie_name:{$ne: "Stake Land"}}).pretty()
+
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2360"),
+        "id" : 5,
+        "Movie_name" : "Beyond the Gates of Splendor",
+        "movie_genre" : "Documentary",
+        "production_year" : 1967,
+        "budget" : 19752
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2361"),
+        "id" : 6,
+        "Movie_name" : "Everyone's Hero",
+        "movie_genre" : "Adventure|Animation|Children|Comedy",
+        "production_year" : 1998,
+        "budget" : 15774
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2362"),
+        "id" : 7,
+        "Movie_name" : "Anazapta (Black Plague)",
+        "movie_genre" : "Drama|Mystery|Thriller",
+        "production_year" : 2009,
+        "budget" : 15294
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2363"),
+        "id" : 8,
+        "Movie_name" : "Libeled Lady",
+        "movie_genre" : "Comedy|Romance",
+        "production_year" : 1996,
+        "budget" : 15338
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2364"),
+        "id" : 9,
+        "Movie_name" : "The Unexpected Love",
+        "movie_genre" : "Comedy|Drama",
+        "production_year" : 2002,
+        "budget" : 12537
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2365"),
+        "id" : 10,
+        "Movie_name" : "Nicht alle waren Mörder",
+        "movie_genre" : "Drama|War",
+        "production_year" : 1999,
+        "budget" : 11422
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2366"),
+        "id" : 11,
+        "Movie_name" : "Rocks (Rad, Das)",
+        "movie_genre" : "Action|Animation|Fantasy",
+        "production_year" : 2010,
+        "budget" : 9306
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2367"),
+        "id" : 12,
+        "Movie_name" : "I Am Curious (Yellow) (Jag är nyfiken - en film i gult)",
+        "movie_genre" : "Documentary|Drama",
+        "production_year" : 2003,
+        "budget" : 19197
+}
+
+
+
+
+
+>> db.users.find({budget:{$gte: 19900}}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c23a1"),
+        "id" : 70,
+        "Movie_name" : "Stroszek",
+        "movie_genre" : "Comedy|Drama",
+        "production_year" : 2009,
+        "budget" : 19979
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c240b"),
+        "id" : 176,
+        "Movie_name" : "Letting Go of God",
+        "movie_genre" : "Comedy|Documentary",
+        "production_year" : 2004,
+        "budget" : 19977
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2420"),
+        "id" : 197,
+        "Movie_name" : "Dead Again",
+        "movie_genre" : "Mystery|Romance|Thriller",
+        "production_year" : 1989,
+        "budget" : 19946
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2479"),
+        "id" : 286,
+        "Movie_name" : "Hide Your Smiling Faces",
+        "movie_genre" : "Drama",
+        "production_year" : 1989,
+        "budget" : 19984
+}
+>
+
+
+
+> db.users.find({budget:{$lte: 9057}}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2441"),
+        "id" : 230,
+        "Movie_name" : "Dog's Life, A",
+        "movie_genre" : "Comedy",
+        "production_year" : 2012,
+        "budget" : 9040
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c24ec"),
+        "id" : 401,
+        "Movie_name" : "Dancing at the Blue Iguana",
+        "movie_genre" : "Drama",
+        "production_year" : 2010,
+        "budget" : 9033
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c24f3"),
+        "id" : 408,
+        "Movie_name" : "Citizen Cohn",
+        "movie_genre" : "Drama",
+        "production_year" : 1997,
+        "budget" : 9011
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c24fc"),
+        "id" : 417,
+        "Movie_name" : "Willard",
+        "movie_genre" : "Horror",
+        "production_year" : 2008,
+        "budget" : 9057
+}
+>
+
+
+
+
+> db.users.find({$and:[{budget:{$gt: 10000}},{production_year:{$gt:2000}}]}).pretty()
+
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2371"),
+        "id" : 22,
+        "Movie_name" : "Motherhood",
+        "movie_genre" : "Comedy",
+        "production_year" : 2012,
+        "budget" : 16643
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2374"),
+        "id" : 25,
+        "Movie_name" : "Man About Town",
+        "movie_genre" : "Comedy|Drama",
+        "production_year" : 2001,
+        "budget" : 17613
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2376"),
+        "id" : 27,
+        "Movie_name" : "Blue Streak",
+        "movie_genre" : "Comedy",
+        "production_year" : 2008,
+        "budget" : 19344
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2378"),
+        "id" : 29,
+        "Movie_name" : "Poolhall Junkies",
+        "movie_genre" : "Comedy|Drama|Thriller",
+        "production_year" : 2012,
+        "budget" : 12126
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2379"),
+        "id" : 30,
+        "Movie_name" : "Double Dare",
+        "movie_genre" : "Documentary",
+        "production_year" : 2012,
+        "budget" : 19276
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c237b"),
+        "id" : 32,
+        "Movie_name" : "Hideaway",
+        "movie_genre" : "Thriller",
+        "production_year" : 2012,
+        "budget" : 17779
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c237c"),
+        "id" : 33,
+        "Movie_name" : "Top Five",
+        "movie_genre" : "Comedy",
+        "production_year" : 2009,
+        "budget" : 15974
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c237e"),
+        "id" : 35,
+        "Movie_name" : "Scared Shrekless",
+        "movie_genre" : "Adventure|Animation|Comedy",
+        "production_year" : 2005,
+        "budget" : 12394
+}
+
+
+> db.users.find({$or:[{budget:{$gt: 10000}},{production_year:{$gt:2000}}]}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235c"),
+        "id" : 1,
+        "Movie_name" : "Towelhead (a.k.a. Nothing is Private)",
+        "movie_genre" : "Drama",
+        "production_year" : 2006,
+        "budget" : 16724
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235d"),
+        "id" : 2,
+        "Movie_name" : "Chronicles of Narnia: Prince Caspian, The",
+        "movie_genre" : "Adventure|Children|Fantasy",
+        "production_year" : 2001,
+        "budget" : 19577
+}
+
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c236b"),
+        "id" : 16,
+        "Movie_name" : "Volcano",
+        "movie_genre" : "Action|Drama|Thriller",
+        "production_year" : 2000,
+        "budget" : 12364
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c236c"),
+        "id" : 17,
+        "Movie_name" : "Hostile Witness",
+        "movie_genre" : "Drama",
+        "production_year" : 1992,
+        "budget" : 18650
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c236d"),
+        "id" : 18,
+        "Movie_name" : "Pervert's Guide to Cinema, The",
+        "movie_genre" : "Documentary",
+        "production_year" : 2000,
+        "budget" : 13060
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c236e"),
+        "id" : 19,
+        "Movie_name" : "Homeward Bound: The Incredible Journey",
+        "movie_genre" : "Adventure|Children|Drama",
+        "production_year" : 1993,
+        "budget" : 17315
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c236f"),
+        "id" : 20,
+        "Movie_name" : "Stake Land",
+        "movie_genre" : "Horror",
+        "production_year" : 2001,
+        "budget" : 14590
+}
+
+
+
+
+> db.users.find({$nor:[{budget:{$gt: 10000}},{production_year:{$gt:2000}}]}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2375"),
+        "id" : 26,
+        "Movie_name" : "Double, Double, Toil and Trouble",
+        "movie_genre" : "Adventure|Children|Comedy|Fantasy|Horror",
+        "production_year" : 1998,
+        "budget" : 9376
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2384"),
+        "id" : 41,
+        "Movie_name" : "Clean and Sober",
+        "movie_genre" : "Drama",
+        "production_year" : 1997,
+        "budget" : 9082
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c238f"),
+        "id" : 52,
+        "Movie_name" : "Among Us (Onder Ons)",
+        "movie_genre" : "Drama",
+        "production_year" : 1996,
+        "budget" : 9853
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c23c3"),
+        "id" : 104,
+        "Movie_name" : "Black Cat, White Cat (Crna macka, beli macor)",
+        "movie_genre" : "Comedy|Romance",
+        "production_year" : 1994,
+        "budget" : 9716
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c242e"),
+        "id" : 211,
+        "Movie_name" : "Place Called Chiapas, A",
+        "movie_genre" : "Documentary",
+        "production_year" : 1990,
+        "budget" : 9238
+}
+
+
+> db.users.find({$or:[{budget:{$ne: 10000}},{production_year:{$ne:2000}}]}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235c"),
+        "id" : 1,
+        "Movie_name" : "Towelhead (a.k.a. Nothing is Private)",
+        "movie_genre" : "Drama",
+        "production_year" : 2006,
+        "budget" : 16724
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235d"),
+        "id" : 2,
+        "Movie_name" : "Chronicles of Narnia: Prince Caspian, The",
+        "movie_genre" : "Adventure|Children|Fantasy",
+        "production_year" : 2001,
+        "budget" : 19577
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235e"),
+        "id" : 3,
+        "Movie_name" : "Groove",
+        "movie_genre" : "Drama",
+        "production_year" : 2000,
+        "budget" : 11056
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235f"),
+        "id" : 4,
+        "Movie_name" : "Robin Hood",
+        "movie_genre" : "Adventure|Romance",
+        "production_year" : 2013,
+        "budget" : 14620
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2360"),
+        "id" : 5,
+        "Movie_name" : "Beyond the Gates of Splendor",
+        "movie_genre" : "Documentary",
+        "production_year" : 1967,
+        "budget" : 19752
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2361"),
+        "id" : 6,
+        "Movie_name" : "Everyone's Hero",
+        "movie_genre" : "Adventure|Animation|Children|Comedy",
+        "production_year" : 1998,
+        "budget" : 15774
+}
+
+
+ db.users.find({$and:[{production_year:{$gt: 2000}},{production_year:{$lt:2010}}]}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235c"),
+        "id" : 1,
+        "Movie_name" : "Towelhead (a.k.a. Nothing is Private)",
+        "movie_genre" : "Drama",
+        "production_year" : 2006,
+        "budget" : 16724
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c235d"),
+        "id" : 2,
+        "Movie_name" : "Chronicles of Narnia: Prince Caspian, The",
+        "movie_genre" : "Adventure|Children|Fantasy",
+        "production_year" : 2001,
+        "budget" : 19577
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2362"),
+        "id" : 7,
+        "Movie_name" : "Anazapta (Black Plague)",
+        "movie_genre" : "Drama|Mystery|Thriller",
+        "production_year" : 2009,
+        "budget" : 15294
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2364"),
+        "id" : 9,
+        "Movie_name" : "The Unexpected Love",
+        "movie_genre" : "Comedy|Drama",
+        "production_year" : 2002,
+        "budget" : 12537
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2367"),
+        "id" : 12,
+        "Movie_name" : "I Am Curious (Yellow) (Jag är nyfiken - en film i gult)",
+        "movie_genre" : "Documentary|Drama",
+        "production_year" : 2003,
+        "budget" : 19197
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c236a"),
+        "id" : 15,
+        "Movie_name" : "T,O,U,C,H,I,N,G",
+        "movie_genre" : "(no genres listed)",
+        "production_year" : 2006,
+        "budget" : 17429
+}
+
+
+> db.users.find().sort({production_year:1,Movie_name:1}).pretty()
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c24aa"),
+        "id" : 335,
+        "Movie_name" : "Adventures of the Wilderness Family, The",
+        "movie_genre" : "Adventure|Children|Drama",
+        "production_year" : 1909,
+        "budget" : 16303
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c23e3"),
+        "id" : 136,
+        "Movie_name" : "Walking with Prehistoric Beasts",
+        "movie_genre" : "Animation|Documentary",
+        "production_year" : 1953,
+        "budget" : 17203
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2477"),
+        "id" : 284,
+        "Movie_name" : "The Pirates of Blood River",
+        "movie_genre" : "Action|Adventure|Comedy",
+        "production_year" : 1963,
+        "budget" : 15186
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2387"),
+        "id" : 44,
+        "Movie_name" : "6 Souls (Shelter)",
+        "movie_genre" : "Horror|Mystery|Thriller",
+        "production_year" : 1964,
+        "budget" : 19711
+}
+
+  
+> db.users.find({$and:[{production_year:{$gt: 2002}},{production_year:{$lt:2004}}]}).pretty().skip(10).limit(5)
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2424"),
+        "id" : 201,
+        "Movie_name" : "I Stand Alone (Seul contre tous)",
+        "movie_genre" : "Drama|Thriller",
+        "production_year" : 2003,
+        "budget" : 14365
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2436"),
+        "id" : 219,
+        "Movie_name" : "El Greco",
+        "movie_genre" : "Drama",
+        "production_year" : 2003,
+        "budget" : 14920
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c248b"),
+        "id" : 304,
+        "Movie_name" : "The Lone Wolf Spy Hunt",
+        "movie_genre" : "(no genres listed)",
+        "production_year" : 2003,
+        "budget" : 11664
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c2493"),
+        "id" : 312,
+        "Movie_name" : "Ceremony, The (Gishiki)",
+        "movie_genre" : "Comedy|Drama",
+        "production_year" : 2003,
+        "budget" : 14425
+}
+{
+        "_id" : ObjectId("61a25a66b83ec35d7d8c249f"),
+        "id" : 324,
+        "Movie_name" : "Human Touch",
+        "movie_genre" : "Drama",
+        "production_year" : 2003,
+        "budget" : 13499
+}
+>
